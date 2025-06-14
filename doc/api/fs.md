@@ -481,7 +481,7 @@ number of bytes read is zero.
 <!-- YAML
 added: v17.0.0
 changes:
-  - version: REPLACEME
+  - version: v24.2.0
     pr-url: https://github.com/nodejs/node/pull/58548
     description: Added the `autoClose` option.
   - version: v24.0.0
@@ -866,7 +866,7 @@ added:
  - v20.4.0
  - v18.18.0
 changes:
- - version: REPLACEME
+ - version: v24.2.0
    pr-url: https://github.com/nodejs/node/pull/58467
    description: No longer experimental.
 -->
@@ -1797,6 +1797,11 @@ added:
     filename passed to the listener. **Default:** `'utf8'`.
   * `signal` {AbortSignal} An {AbortSignal} used to signal when the watcher
     should stop.
+  * `maxQueue` {number} Specifies the number of events to queue between iterations
+    of the {AsyncIterator} returned. **Default:** `2048`.
+  * `overflow` {string} Either `'ignore'` or `'throw'` when there are more events to be
+    queued than `maxQueue` allows. `'ignore'` means overflow events are dropped and a
+    warning is emitted, while `'throw'` means to throw an exception. **Default:** `'ignore'`.
 * Returns: {AsyncIterator} of objects with the properties:
   * `eventType` {string} The type of change
   * `filename` {string|Buffer|null} The name of the file changed.
@@ -6763,7 +6768,7 @@ included in the iteration results.
 <!-- YAML
 added: v24.1.0
 changes:
- - version: REPLACEME
+ - version: v24.2.0
    pr-url: https://github.com/nodejs/node/pull/58467
    description: No longer experimental.
 -->
@@ -6776,7 +6781,7 @@ dir is closed.
 <!-- YAML
 added: v24.1.0
 changes:
- - version: REPLACEME
+ - version: v24.2.0
    pr-url: https://github.com/nodejs/node/pull/58467
    description: No longer experimental.
 -->

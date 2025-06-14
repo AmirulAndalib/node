@@ -1072,11 +1072,11 @@ The `'origin'` event is only emitted when using a secure TLS connection.
 <!-- YAML
 added: v8.4.0
 changes:
-  - version: REPLACEME
+  - version: v24.2.0
     pr-url: https://github.com/nodejs/node/pull/58293
     description: The `weight` option is now ignored, setting it will trigger a
                  runtime warning.
-  - version: REPLACEME
+  - version: v24.2.0
     pr-url: https://github.com/nodejs/node/pull/58313
     description: Following the deprecation of priority signaling as of RFC 1993,
                  `weight` option is deprecated.
@@ -1463,9 +1463,9 @@ numeric stream identifier.
 
 <!-- YAML
 added: v8.4.0
-deprecated: REPLACEME
+deprecated: v24.2.0
 changes:
-  - version: REPLACEME
+  - version: v24.2.0
     pr-url: https://github.com/nodejs/node/pull/58293
     description: This method no longer sets the priority of the stream. Using it
                  now triggers a runtime warning.
@@ -1571,11 +1571,11 @@ req.setTimeout(5000, () => req.close(NGHTTP2_CANCEL));
 <!-- YAML
 added: v8.4.0
 changes:
-  - version: REPLACEME
+  - version: v24.2.0
     pr-url: https://github.com/nodejs/node/pull/58293
     description: The `state.weight` property is now always set to 16 and
                  `sumDependencyWeight` is always set to 0.
-  - version: REPLACEME
+  - version: v24.2.0
     pr-url: https://github.com/nodejs/node/pull/58313
     description: Following the deprecation of priority signaling as of RFC 1993,
                  `weight` and `sumDependencyWeight` options are deprecated.
@@ -2431,7 +2431,7 @@ closed, although the server has already stopped allowing new sessions. See
 <!-- YAML
 added: v20.4.0
 changes:
- - version: REPLACEME
+ - version: v24.2.0
    pr-url: https://github.com/nodejs/node/pull/58467
    description: No longer experimental.
 -->
@@ -2910,6 +2910,10 @@ changes:
     a server should wait when an [`'unknownProtocol'`][] is emitted. If the
     socket has not been destroyed by that time the server will destroy it.
     **Default:** `10000`.
+  * `strictFieldWhitespaceValidation` {boolean} If `true`, it turns on strict leading
+    and trailing whitespace validation for HTTP/2 header field names and values
+    as per [RFC-9113](https://www.rfc-editor.org/rfc/rfc9113.html#section-8.2.1).
+    **Default:** `true`.
   * ...: Any [`net.createServer()`][] option can be provided.
 * `onRequestHandler` {Function} See [Compatibility API][]
 * Returns: {Http2Server}
@@ -3081,6 +3085,10 @@ changes:
     a server should wait when an [`'unknownProtocol'`][] event is emitted. If
     the socket has not been destroyed by that time the server will destroy it.
     **Default:** `10000`.
+  * `strictFieldWhitespaceValidation` {boolean} If `true`, it turns on strict leading
+    and trailing whitespace validation for HTTP/2 header field names and values
+    as per [RFC-9113](https://www.rfc-editor.org/rfc/rfc9113.html#section-8.2.1).
+    **Default:** `true`.
 * `onRequestHandler` {Function} See [Compatibility API][]
 * Returns: {Http2SecureServer}
 
@@ -3236,6 +3244,10 @@ changes:
     a server should wait when an [`'unknownProtocol'`][] event is emitted. If
     the socket has not been destroyed by that time the server will destroy it.
     **Default:** `10000`.
+  * `strictFieldWhitespaceValidation` {boolean} If `true`, it turns on strict leading
+    and trailing whitespace validation for HTTP/2 header field names and values
+    as per [RFC-9113](https://www.rfc-editor.org/rfc/rfc9113.html#section-8.2.1).
+    **Default:** `true`.
 * `listener` {Function} Will be registered as a one-time listener of the
   [`'connect'`][] event.
 * Returns: {ClientHttp2Session}

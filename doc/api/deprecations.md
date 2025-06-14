@@ -718,6 +718,9 @@ The `SlowBuffer` class has been removed. Please use
 
 <!-- YAML
 changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/58620
+    description: Runtime deprecation.
   - version: v6.12.0
     pr-url: https://github.com/nodejs/node/pull/10116
     description: A deprecation code has been assigned.
@@ -726,10 +729,10 @@ changes:
     description: Documentation-only deprecation.
 -->
 
-Type: Documentation-only
+Type: Runtime
 
-The [`ecdh.setPublicKey()`][] method is now deprecated as its inclusion in the
-API is not useful.
+The [`ecdh.setPublicKey()`][] method is now deprecated as its inclusion in
+the API is not useful.
 
 ### DEP0032: `node:domain` module
 
@@ -2521,17 +2524,18 @@ object can lead to crashing the application.
 
 <!-- YAML
 changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/58619
+    description: End-of-Life.
   - version: v11.0.0
     pr-url: https://github.com/nodejs/node/pull/23173
     description: Runtime deprecation.
 -->
 
-Type: Runtime
+Type: End-of-Life
 
 Previous versions of Node.js supported `dns.lookup()` with a falsy host name
-like `dns.lookup(false)` due to backward compatibility.
-This behavior is undocumented and is thought to be unused in real world apps.
-It will become an error in future versions of Node.js.
+like `dns.lookup(false)` due to backward compatibility. This has been removed.
 
 ### DEP0119: `process.binding('uv').errname()` private API
 
@@ -2974,12 +2978,15 @@ upon `require('node:module').builtinModules`.
 
 <!-- YAML
 changes:
+  - version: v15.0.0
+    pr-url: https://github.com/nodejs/node/pull/33105
+    description: End-of-Life.
   - version: v14.5.0
     pr-url: https://github.com/nodejs/node/pull/33126
     description: Runtime deprecation.
 -->
 
-Type: Runtime
+Type: End-of-Life
 
 `Transform._transformState` will be removed in future versions where it is
 no longer required due to simplification of the implementation.
@@ -3542,6 +3549,9 @@ issued for `url.parse()` vulnerabilities.
 
 <!-- YAML
 changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/58617
+    description: End-of-Life.
   - version:
     - v20.0.0
     pr-url: https://github.com/nodejs/node/pull/45526
@@ -3553,11 +3563,11 @@ changes:
     description: Documentation-only deprecation.
 -->
 
-Type: Runtime
+Type: End-of-Life
 
-[`url.parse()`][] accepts URLs with ports that are not numbers. This behavior
-might result in host name spoofing with unexpected input. These URLs will throw
-an error in future versions of Node.js, as the [WHATWG URL API][] does already.
+[`url.parse()`][] used to accept URLs with ports that are not numbers. This
+behavior might result in host name spoofing with unexpected input. These URLs
+will throw an error (which the [WHATWG URL API][] also does).
 
 ### DEP0171: Setters for `http.IncomingMessage` headers and trailers
 
@@ -3580,15 +3590,18 @@ In a future version of Node.js, [`message.headers`][],
 
 <!-- YAML
 changes:
+  - version: REPLACEME
+    pr-url: https://github.com/nodejs/node/pull/58618
+    description: End-of-Life.
   - version: v20.0.0
     pr-url: https://github.com/nodejs/node/pull/46432
     description: Runtime-deprecation.
 -->
 
-Type: Runtime
+Type: End-of-Life
 
-In a future version of Node.js, the `asyncResource` property will no longer
-be added when a function is bound to an `AsyncResource`.
+Older versions of Node.js would add the `asyncResource` when a function is
+bound to an `AsyncResource`. It no longer does.
 
 ### DEP0173: the `assert.CallTracker` class
 
@@ -3934,7 +3947,7 @@ upon `require('node:module').builtinModules`.
 
 <!-- YAML
 changes:
-  - version: REPLACEME
+  - version: v24.2.0
     pr-url: https://github.com/nodejs/node/pull/57643
     description: Runtime deprecation.
 -->
@@ -3948,7 +3961,7 @@ an internal nodejs implementation rather than a public facing API, use `node:tls
 
 <!-- YAML
 changes:
-  - version: REPLACEME
+  - version: v24.2.0
     pr-url: https://github.com/nodejs/node/pull/58337
     description: Runtime deprecation.
 -->
@@ -3963,10 +3976,10 @@ an internal nodejs implementation rather than a public facing API, use `node:str
 
 <!-- YAML
 changes:
-  - version: REPLACEME
+  - version: v24.2.0
     pr-url: https://github.com/nodejs/node/pull/58293
     description: End-of-Life.
-  - version: REPLACEME
+  - version: v24.2.0
     pr-url: https://github.com/nodejs/node/pull/58313
     description: Documentation-only deprecation.
 -->
@@ -3979,7 +3992,7 @@ The support for priority signaling has been removed following its deprecation in
 
 <!-- YAML
 changes:
-  - version: REPLACEME
+  - version: v24.2.0
     pr-url: https://github.com/nodejs/node/pull/58518
     description: Documentation-only deprecation.
 -->
@@ -3994,7 +4007,7 @@ It is recommended to use the `new` qualifier instead. This applies to all http c
 
 <!-- YAML
 changes:
-  - version: REPLACEME
+  - version: v24.2.0
     pr-url: https://github.com/nodejs/node/pull/58564
     description: Documentation-only deprecation.
 -->
@@ -4012,6 +4025,20 @@ nullish value.
 To make [`child_process.exec`][] invoke the default shell, either omit the
 `shell` option, or set it to a nullish value. If the intention is not to invoke
 a shell, use [`child_process.execFile`][] instead.
+
+### DEP0197: `util.types.isNativeError()`
+
+<!-- YAML
+changes:
+  - version:
+    - v24.2.0
+    pr-url: https://github.com/nodejs/node/pull/58262
+    description: Documentation-only deprecation.
+-->
+
+Type: Documentation-only
+
+The [`util.types.isNativeError`][] API is deprecated. Please use [`Error.isError`][] instead.
 
 [DEP0142]: #dep0142-repl_builtinlibs
 [NIST SP 800-38D]: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf
@@ -4031,6 +4058,7 @@ a shell, use [`child_process.execFile`][] instead.
 [`Buffer.isBuffer()`]: buffer.md#static-method-bufferisbufferobj
 [`Cipheriv`]: crypto.md#class-cipheriv
 [`Decipheriv`]: crypto.md#class-decipheriv
+[`Error.isError`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/isError
 [`REPLServer.clearBufferedCommand()`]: repl.md#replserverclearbufferedcommand
 [`ReadStream.open()`]: fs.md#class-fsreadstream
 [`Server.getConnections()`]: net.md#servergetconnectionscallback
@@ -4143,6 +4171,7 @@ a shell, use [`child_process.execFile`][] instead.
 [`util.isArray()`]: util.md#utilisarrayobject
 [`util.promisify`]: util.md#utilpromisifyoriginal
 [`util.toUSVString()`]: util.md#utiltousvstringstring
+[`util.types.isNativeError`]: util.md#utiltypesisnativeerrorvalue
 [`util.types`]: util.md#utiltypes
 [`util`]: util.md
 [`worker.exitedAfterDisconnect`]: cluster.md#workerexitedafterdisconnect
